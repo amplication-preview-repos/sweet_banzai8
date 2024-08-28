@@ -1,0 +1,85 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model PatientAppointments {
+  appointment    String?
+  appointmentId  String?
+  appointmentRef String?
+  createdAt      DateTime @default(now())
+  id             String   @id @default(cuid())
+  patient        String?
+  patientId      String?
+  patientRef     String?
+  updatedAt      DateTime @updatedAt
+}
+
+model PatientDetails {
+  createdAt      DateTime @default(now())
+  id             String   @id @default(cuid())
+  patientAge     Int?
+  patientGender  String?
+  patientId      Int?
+  patientName    String?
+  patientPhoneNo String?
+  updatedAt      DateTime @updatedAt
+}
+
+model PhlebotomistDetails {
+  createdAt      DateTime @default(now())
+  id             String   @id @default(cuid())
+  plebBloodGroup String?
+  plebEmail      String?
+  plebId         Int?
+  plebName       String?
+  plebPhoneNo    String?
+  updatedAt      DateTime @updatedAt
+}
+
+model AppointmentDetails {
+  addressId Int?
+  apptId    Int?
+  createdAt DateTime  @default(now())
+  id        String    @id @default(cuid())
+  phoneNo   String?
+  plebId    Int?
+  status    String?
+  time      DateTime?
+  typeField String?
+  updatedAt DateTime  @updatedAt
+}
+
+model TestDetails {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  testId    Int?
+  testName  String?
+  testPrice Float?
+  updatedAt DateTime @updatedAt
+}
+
+model PatientTests {
+  createdAt  DateTime @default(now())
+  id         String   @id @default(cuid())
+  patient    String?
+  patientId  String?
+  patientRef String?
+  test       String?
+  testId     String?
+  testRef    String?
+  updatedAt  DateTime @updatedAt
+}
+
+model AddressDetails {
+  addressId     Int?
+  createdAt     DateTime @default(now())
+  id            String   @id @default(cuid())
+  locationUrl   String?
+  residenceText String?
+  updatedAt     DateTime @updatedAt
+}
